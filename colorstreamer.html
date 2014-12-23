@@ -3,11 +3,13 @@
 </head>
 
 <body>
-  <h1>Colorstreamer</h1>
-  <form class="new-color">
-  	<input type="color" name="color" />
-  	<input type="submit" name="submit" />
-  </form>
+  <header>
+	  <h1>Colorstreamer</h1>
+	  <form class="new-color">
+	  	<input type="color" name="color" />
+	  	<input type="submit" name="submit" />
+	  </form>
+  </header>
   <div class="color-container">
   	{{#each colors}}
   		{{>colorbar}}
