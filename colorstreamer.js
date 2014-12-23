@@ -12,31 +12,35 @@ if (Meteor.isClient) {
   Template.body.events({
     "submit .new-color": function( event ){
       var color = event.target.color.value;
-      Colors.insert({
-        color: color,
-        createdAt: new Date()
-      });
-
+      Meteor.call("addColor", color);
       event.target.color.value = "";
 
-      //console.log(allColors.length);
-      // remove anything in Colors besides the last 10
-      var toDelete = Colors.find({}, {sort: {createdAt: -1}, skip: 10});
-      toDelete.forEach(function (color){
-        Colors.remove(color._id);
-      });
-      return false;
+      event.preventDefault();
 
+      return false;
     }
   });
 
   Template.colorbar.events({
     "click .colorbar": function () {
-          Colors.remove(this._id);
+          return false;
         }
 });
 
 }
+
+Meteor.methods({
+  addColor: function(color){
+      Colors.insert({
+        color: color,
+        createdAt: new Date()
+      });
+      var toDelete = Colors.find({}, {sort: {createdAt: -1}, skip: 20});
+      toDelete.forEach(function (color){
+        Colors.remove(color._id);
+      });
+  }
+});
 
 if (Meteor.isServer) {
   Meteor.startup(function () {

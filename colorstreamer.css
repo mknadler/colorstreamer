@@ -4,8 +4,15 @@ html, body {
 	margin: 0;
 }
 
+body {
+	font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+}
+
 h1 {
-	text-align: center;
+	text-align: left;
+	padding: 1rem 0 0 1rem;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
 }
 
 header{
@@ -15,8 +22,29 @@ header{
 .color-container{
 	height: 80%;
 	width: 100%;
+	overflow-y: hidden;
 }
 .colorbar {
 	width: 100%;
-	height: 5%;
+	height: 5.1%;
+}
+
+p {
+	margin-left: 1rem;
+}
+
+a {
+	text-decoration: none;
+	border-bottom: 1px solid black;
+	color: #ff0033;
+}
+a:hover {
+	color: blue;
+}
+a:active{
+	color: yellow;
+}
+form {
+	padding-left: 1rem;
+	padding-top: 1rem;
 }
