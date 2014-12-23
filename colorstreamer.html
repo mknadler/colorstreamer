@@ -1,0 +1,25 @@
+<head>
+  <title>Colorstreamer</title>
+</head>
+
+<body>
+  <h1>Colorstreamer</h1>
+  <form class="new-color">
+  	<input type="color" name="color" />
+  	<input type="submit" name="submit" />
+  </form>
+  <div class="color-container">
+  	{{#each colors}}
+  		{{>colorbar}}
+  	{{/each}}
+  </div>
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="colorbar">
+	<div class="colorbar" style="background:{{color}}"></div>
+</template>
