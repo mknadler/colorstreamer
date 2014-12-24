@@ -14,19 +14,6 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.body.events({
-    "submit .new-color": function( event ){
-      var color = event.target.color.value;
-      Meteor.call("addColor", color);
-      event.target.color.value = "";
-      event.preventDefault();
-      return false;
-    }
-  });
-
-  Template.colorpick.helpers({
-  });
-
   Template.colorpick.events({
     "click div.color-option": function(){
       console.log(this.color);
@@ -48,7 +35,7 @@ Meteor.methods({
         color: color,
         createdAt: new Date()
       });
-      var toDelete = Colors.find({}, {sort: {createdAt: -1}, skip: 20});
+      var toDelete = Colors.find({}, {sort: {createdAt: -1}, skip: 40});
       toDelete.forEach(function (color){
         Colors.remove(color._id);
       });
