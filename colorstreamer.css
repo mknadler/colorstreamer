@@ -8,19 +8,38 @@ body {
 	font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
 }
 
-h1 {
-	text-align: left;
-	padding: 1rem 0 0 1rem;
+h1, p {
 	-webkit-margin-before: 0;
 	-webkit-margin-after: 0;
 }
 
+h1 {
+	text-align: left;
+	padding: 1rem 0 0 1rem;
+}
+
+.color-option{ 
+	width: 3.7%;
+	height: 1rem;
+	float: left;
+}
+
 header{
-	height: 20%;
 	width: 100%;
 	z-index: 2;
 	position: relative;
+	background: white;
 }
+
+.description {
+	z-index: 3;
+	position: relative;
+}
+
+.description p {
+	background: rgba(255, 255, 255, 0.8);
+}
+
 .color-container{
 	height: 100%;
 	width: 100%;
@@ -29,6 +48,21 @@ header{
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+.colorpicker {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	z-index: 3;
+	background: white;
+	//padding: .2rem;
+}
+
+#add-color {
+	float: right;
+	padding-right: 1rem;
+	display: inline-block;
+	height: 100%;
 }
 .colorbar {
 	width: 5%;
@@ -42,14 +76,13 @@ p {
 	padding-left: 1rem;
 }
 
-h1, p, label {
+h1, form.orientationPicker {
 	color: black;
-	background: rgba(255, 255, 255, 0.5);
 }
 
 a {
 	text-decoration: none;
-	border-bottom: 1px solid black;
+	//border-bottom: 1px solid black;
 	color: #ff0033;
 }
 a:hover {
