@@ -39,7 +39,8 @@ Meteor.methods({
       toDelete.forEach(function (color){
         Colors.remove(color._id);
       });
-  }
+  },
+ 
 });
 
 if (Meteor.isServer) {
