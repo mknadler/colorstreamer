@@ -1,5 +1,6 @@
 Colors = new Mongo.Collection("colors");
-ColorOptions = new Mongo.Collection("options")
+People = new Meteor.Collection("people");
+ColorOptions = new Mongo.Collection("options");
 
 if (Meteor.isClient) {
 
@@ -9,7 +10,6 @@ if (Meteor.isClient) {
     },
     option: function() {
       var result = ColorOptions.find();
-      console.log(result);
       return ColorOptions.find();
     }
   });
@@ -21,10 +21,15 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.colorbar.events({
-    "click .colorbar": function () {
-          return false;
-        }
+  Template.howmany.helpers({
+    count: function () {
+      if (People.find() != undefined) {
+          var num = People.find().fetch().length;
+          console.log(num);
+          return People.find().fetch().length;
+      }
+      return 'Nobody!';
+    }
   });
 
 }
@@ -52,6 +57,34 @@ if (Meteor.isServer) {
           color: col
         });
       });
-    }
+    };
+    People.remove({});
+    Meteor.server.stream_server.register( Meteor.bindEnvironment( function(socket) {
+        var intervalID = Meteor.setInterval(function() {
+            if (socket._meteorSession) {
+                var connection = {
+                    connectionID: socket._meteorSession.id,
+                    connectionAddress: socket.address,
+                    userID: socket._meteorSession.userId
+                };
+
+                socket.id = socket._meteorSession.id;
+
+                People.insert(connection);
+
+                Meteor.clearInterval(intervalID);
+            }
+        }, 1000);
+
+        socket.on('close', Meteor.bindEnvironment(function () {
+            People.remove({
+                connectionID: socket.id
+            });
+        }, function(e) {
+            Meteor._debug("Exception from connection close callback:", e);
+        }));
+    }, function(e) {
+        Meteor._debug("Exception from connection registration callback:", e);
+    }));
   });
 }

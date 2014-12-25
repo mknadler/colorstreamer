@@ -12,7 +12,7 @@
 	  <h1>Colorstreamer</h1>
   </header>
   <div class="description">
-      <p>MMOCP (Massively Multiplayer Online Color Picker). <a href="https://github.com/mknadler/colorstreamer">Source</a>.<br/>Pick a color up top to add it to the stream.</p>
+      <p>MMOCP (Massively Multiplayer Online Color Picker). <a href="https://github.com/mknadler/colorstreamer">Source</a>.<br/>Pick a color up top to add it to the stream. <strong>#Users: {{> howmany}}</strong></p>
     </div>
   <div class="color-container">
   	{{#each colors}}
@@ -24,7 +24,11 @@
 <template name="colorbar">
 	<div class="colorbar" style="background:{{color}}"></div>
 </template>
+
 <template name="colorpick">
   <div class="color-option" style="background:{{color}}"></div>
 </template>
 
+<template name="howmany">
+    <span>{{count}}</span>
+</template>
