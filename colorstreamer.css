@@ -21,17 +21,55 @@ h1 {
 	padding: 1rem 0 0 1rem;
 }
 
-.color-option{ 
-	width: 3.7%;
-	height: 4rem;
-	float: left;
-}
-
 header{
 	width: 100%;
 	z-index: 2;
 	position: relative;
 	background: rgba(255, 255, 255, .9);
+}
+
+button {
+	margin-left: 1rem;
+}
+
+p {
+	padding-left: 1rem;
+}
+
+a {
+	text-decoration: none;
+	//border-bottom: 1px solid black;
+	color: #ff0033;
+}
+
+a:hover {
+	color: blue;
+}
+
+a:active{
+	color: yellow;
+}
+
+
+h1, form.orientationPicker {
+	color: black;
+}
+
+input {
+	margin-left: 1rem;
+	margin-top: 1rem;
+}
+.colorpicker {
+	width: 100%;
+	position: relative;
+	z-index: 3;
+	background: white;
+	//padding: .2rem;
+}
+.color-option{ 
+	width: 3.7%;
+	height: 4rem;
+	float: left;
 }
 
 .description {
@@ -52,13 +90,6 @@ header{
 	top: 0;
 	left: 0;
 }
-.colorpicker {
-	width: 100%;
-	position: relative;
-	z-index: 3;
-	background: white;
-	//padding: .2rem;
-}
 
 #add-color {
 	float: right;
@@ -66,34 +97,9 @@ header{
 	display: inline-block;
 	height: 100%;
 }
+
 .colorbar {
 	width: 2.5%;
 	height: 100%;
 	float: left;
-}
-button {
-	margin-left: 1rem;
-}
-p {
-	padding-left: 1rem;
-}
-
-h1, form.orientationPicker {
-	color: black;
-}
-
-a {
-	text-decoration: none;
-	//border-bottom: 1px solid black;
-	color: #ff0033;
-}
-a:hover {
-	color: blue;
-}
-a:active{
-	color: yellow;
-}
-input {
-	margin-left: 1rem;
-	margin-top: 1rem;
 }
